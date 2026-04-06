@@ -1,21 +1,24 @@
-# 🎓 Edu - Educador Financeiro Inteligente
+# 📉 Ben - Seu Melhor Planejador Financeiro de Metas
 
-> Agente de IA Generativa que ensina conceitos de finanças pessoais de forma simples e personalizada, usando os próprios dados do cliente como exemplos práticos.
+> Assistente virtual especializado em criar planos de ação personalizados para metas financeiras de curto, médio e longo prazo.
 
-## 💡 O Que é o Edu?
+## 💡 O Que é o Ben?
 
-O Edu é um educador financeiro que **ensina**, não recomenda. Ele explica conceitos como reserva de emergência, tipos de investimentos e análise de gastos usando uma abordagem didática e exemplos concretos baseados no perfil do cliente.
+O Ben é um assistente estratégico que foca no planejamento e não apenas no cálculo. Ele ajuda o usuário a definir metas claras (como comprar um carro, fazer uma viagem ou aposentadoria) e calcula o esforço mensal necessário, sugerindo ajustes no orçamento para viabilizar esses objetivos.
 
-**O que o Edu faz:**
-- ✅ Explica conceitos financeiros de forma simples
-- ✅ Usa dados do cliente como exemplos práticos
-- ✅ Responde dúvidas sobre produtos financeiros
-- ✅ Analisa padrões de gastos de forma educativa
+**O que o Ben faz:**
 
-**O que o Edu NÃO faz:**
-- ❌ Não recomenda investimentos específicos
-- ❌ Não acessa dados bancários sensíveis
-- ❌ Não substitui um profissional certificado
+  - ✅ Estrutura metas financeiras (Método SMART)
+  - ✅ Calcula projeções de tempo e valor necessário
+  - ✅ Sugere priorização de metas com base no perfil
+  - ✅ Simula cenários de economia mensal
+
+**O que o Ben NÃO faz:**
+
+  - ❌ Não realiza operações de compra/venda de ativos
+  - ❌ Não garante rentabilidade futura de investimentos
+  - ❌ Não substitui uma consultoria financeira individualizada
+  - ❌ Não faz metas incondizentes com o orçamento do usuário
 
 ## 🏗️ Arquitetura
 
@@ -23,53 +26,49 @@ O Edu é um educador financeiro que **ensina**, não recomenda. Ele explica conc
 flowchart TD
     A[Usuário] --> B[Streamlit]
     B --> C[Ollama - LLM Local]
-    C --> D[Base de Conhecimento]
+    C --> D[Base de Metas e Perfil]
     D --> C
-    C --> E[Resposta Educativa]
+    C --> E[Plano de Metas Personalizado]
 ```
 
 **Stack:**
-- Interface: Streamlit
-- LLM: Ollama (modelo local `gpt-oss`)
-- Dados: JSON/CSV mockados
+
+  - Interface: Streamlit
+  - LLM: Ollama (modelo local `deepseek-v3.1:671b-cloud`)
+  - Dados: JSON/CSV para metas e histórico
 
 ## 📁 Estrutura do Projeto
 
 ```
 ├── data/                          # Base de conhecimento
-│   ├── perfil_investidor.json     # Perfil do cliente
-│   ├── transacoes.csv             # Histórico financeiro
-│   ├── historico_atendimento.csv  # Interações anteriores
-│   └── produtos_financeiros.json  # Produtos para ensino
+│   ├── perfil_financeiro.json     # Renda e tolerância a risco
+│   ├── metas.csv                  # [NOVO] Detalhes de metas e métodos
+│   ├── transacoes.csv             # Histórico de gastos
+│   └── produtos_financeiros.json  # Onde investir para cada meta
 │
-├── docs/                          # Documentação completa
-│   ├── 01-documentacao-agente.md  # Caso de uso e persona
-│   ├── 02-base-conhecimento.md    # Estratégia de dados
-│   ├── 03-prompts.md              # System prompt e exemplos
-│   ├── 04-metricas.md             # Avaliação de qualidade
-│   └── 05-pitch.md                # Apresentação do projeto
 │
 └── src/
-    └── app.py                     # Aplicação Streamlit
+    └── app.py                     # Aplicação Principal (Interface Ben)
+
 ```
 
 ## 🚀 Como Executar
 
-### 1. Instalar Ollama
+### 1\. Instalar Ollama
 
 ```bash
 # Baixar em: ollama.com
-ollama pull gpt-oss
+ollama pull deepseek-v3.1:671b-cloud
 ollama serve
 ```
 
-### 2. Instalar Dependências
+### 2\. Instalar Dependências
 
 ```bash
-pip install streamlit pandas requests
+pip install streamlit pandas requests numpy-financial
 ```
 
-### 3. Rodar o Edu
+### 3\. Rodar o Ben
 
 ```bash
 streamlit run src/app.py
@@ -77,27 +76,27 @@ streamlit run src/app.py
 
 ## 🎯 Exemplo de Uso
 
-**Pergunta:** "O que é CDI?"  
-**Edu:** "CDI é uma taxa de referência usada pelos bancos. Quando um investimento rende '100% do CDI', significa que ele acompanha essa taxa. Hoje o CDI está próximo da Selic. Quer que eu explique a diferença entre os dois?"
+**Pergunta:** "Quero juntar R$ 10.000 para uma viagem em 12 meses. É possível?"  
+**Ben:** "Para atingir R$ 10.000 em 1 ano, você precisaria poupar aproximadamente R$ 800/mês (considerando uma taxa conservadora). Analisando seu gasto atual com lazer, se reduzirmos 20% lá, você consegue bater essa meta sem aperto. Quer que eu monte o cronograma?"
 
-**Pergunta:** "Onde estou gastando mais?"  
-**Edu:** "Olhando suas transações de outubro, sua maior despesa é moradia (R$ 1.380), seguida de alimentação (R$ 570). Juntas, representam quase 80% dos seus gastos. Isso é bem comum! Quer que eu explique algumas estratégias de organização?"
+**Pergunta:** "Minhas metas estão realistas?"  
+**Ben:** "Atualmente você tem 3 metas (Viagem, Reserva e Notebook). Somadas, elas exigem R$ 1.500/mês, mas seu saldo livre hoje é de R$ 1.100. Sugiro estender o prazo da meta 'Notebook' em 4 meses para manter seu fundo de reserva saudável. O que acha?"
 
 ## 📊 Métricas de Avaliação
 
 | Métrica | Objetivo |
 |---------|----------|
-| **Assertividade** | O agente responde o que foi perguntado? |
-| **Segurança** | Evita inventar informações (anti-alucinação)? |
-| **Coerência** | A resposta é adequada ao perfil do cliente? |
+| **Precisão Matemática** | Os cálculos de tempo e valor estão corretos? |
+| **Viabilidade** | O plano sugerido cabe no orçamento do usuário? |
+| **Persuasão Positiva** | O agente incentiva a economia de forma engajadora? |
 
 ## 🎬 Diferenciais
 
-- **Personalização:** Usa os dados do próprio cliente nos exemplos
-- **100% Local:** Roda com Ollama, sem enviar dados para APIs externas
-- **Educativo:** Foco em ensinar, não em vender produtos
-- **Seguro:** Estratégias de anti-alucinação documentadas
+  - **Foco em Execução:** Transforma desejos abstratos em planos mensais concretos.
+  - **Privacidade Total:** Processamento local via Ollama para manter dados financeiros protegidos.
+  - **Visão Holística:** Não olha apenas para uma meta isolada, mas para todo o ecossistema financeiro do usuário.
+  - **Adaptabilidade:** Recalcula planos instantaneamente se a renda do usuário mudar.
 
 ## 📝 Documentação Completa
 
-Toda a documentação técnica, estratégias de prompt e casos de teste estão disponíveis na pasta [`docs/`](./docs/).
+As diretrizes de design, lógica de cálculo e guias de implementação estão detalhados na pasta [`docs/`](https://www.google.com/search?q=./docs/).
