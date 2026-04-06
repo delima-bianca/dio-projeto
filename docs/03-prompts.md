@@ -1,5 +1,3 @@
-Aqui está o template de documentação de prompts adaptado para a persona, o objetivo e as regras de negócio do **Ben**.
-
 # Prompts do Agente
 
 > [!TIP]
