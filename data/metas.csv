@@ -1,0 +1,9 @@
+tipo,nome,descricao,metodo_sugerido,prazo_estimado
+META,Reserva de Emergência,Segurança para Imprevistos (6x gastos mensais),50-30-20,06-12 meses
+META,Independência Financeira,Acúmulo de capital para viver de renda,70-30,15-30 anos
+META,Viagem de Férias,Lazer planejado sem endividamento,Pague-se Primeiro,06-18 meses
+META,Compra de Veículo,Aquisição de bem móvel com foco em entrada,70-30,24-48 meses
+METODO,Regra 50-30-20,50% Necessidades / 30% Desejos / 20% Metas,N/A,N/A
+METODO,Regra 70-30,70% para o presente / 30% para o futuro,N/A,N/A
+ESTRATEGIA,Pague-se Primeiro,Investir o valor da meta antes de começar os gastos,N/A,Mensal
+ESTRATEGIA,Bola de Neve,Focar na quitação da menor dívida primeiro,N/A,Variável
