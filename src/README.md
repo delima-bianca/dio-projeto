@@ -5,10 +5,10 @@
 ```bash
 # 1. Instalar Ollama (ollama.com)
 # 2. Baixar um modelo leve
-ollama pull gpt-oss
+ollama pull deepseek-v3.1:671b-cloud
 
 # 3. Testar se funciona
-ollama run gpt-oss "Olá!"
+ollama run deepseek-v3.1:671b-cloud "Olá!"
 ```
 
 ## Código Completo
@@ -19,7 +19,7 @@ Todo o código-fonte está no arquivo `app.py`.
 
 ```bash
 # 1. Instalar dependências
-pip install streamlit pandas requests
+pip install streamlit pandas requests numpy-financial
 
 # 2. Garantir que Ollama está rodando
 ollama serve
