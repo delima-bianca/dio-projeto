@@ -12,6 +12,7 @@ perfil = json.load(open('./data/perfil_investidor.json'))
 transacoes = pd.read_csv('./data/transacoes.csv')
 historico = pd.read_csv('./data/historico_atendimento.csv')
 produtos = json.load(open('./data/produtos_financeiros.json'))
+metas = pd_read_csv('./data/metas.csv')
 
 # ============ MONTAR CONTEXTO ============
 contexto = f"""
